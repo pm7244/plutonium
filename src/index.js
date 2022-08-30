@@ -10,7 +10,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 
-mongoose.connect("mongodb+srv://PawarMukesh:H0kj9rXiW8VOQJA2@cluster0.zxv7wgr.mongodb.net/new-middleware2?retryWrites=true&w=majority", {
+mongoose.connect("mongodb+srv://PawarMukesh:H0kj9rXiW8VOQJA2@cluster0.zxv7wgr.mongodb.net/new-auth-1?retryWrites=true&w=majority", {
     useNewUrlParser: true
 })
 .then( () => console.log("MongoDb is connected"))
@@ -27,18 +27,18 @@ mongoose.connect("mongodb+srv://PawarMukesh:H0kj9rXiW8VOQJA2@cluster0.zxv7wgr.mo
 // time , IP, Route should be printed on each line in terminal( every time an api is hit)
 // 2010-08-19 14:00:00 , 123.459.898.734 , /createUser
 
-const moment = require('moment')
-const time = moment();
-app.use(
-    function(req, res, next){
-        console.log("it's running on global")
-        console.log(time.format('YYYY,MM,DD'))
-        console.log(time.format('hh:mm:ss'))
-        console.log(req.ip)
-        console.log(req.originalUrl)
-        next()
-    }
-)
+// const moment = require('moment')
+// const time = moment();
+// app.use(
+//     function(req, res, next){
+//         console.log("it's running on global")
+//         console.log(time.format('YYYY,MM,DD'))
+//         console.log(time.format('hh:mm:ss'))
+//         console.log(req.ip)
+//         console.log(req.originalUrl)
+//         next()
+//     }
+// )
 
 app.use('/', route);
 
