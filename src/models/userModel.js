@@ -1,18 +1,50 @@
-const  mongoose = require('mongoose');
-const userSchema = new mongoose.Schema({
-	
-        firstName : String,
-        lastName : String,
-        mobile : String,
-        emailId : String,
-        password : String,
-        age : String,
-    
-gender : {
-    type:String,
-    enum:["male","female","LGBTQ"]
-},
-        
-}, {timestamps: true});
+const mongoose = require('mongoose');
 
-module.exports = mongoose.model('newUser', userSchema) //users
+const userSchema = new mongoose.Schema( {
+    firstName: String,
+    lastName: String,
+    mobile: {
+        type: String,
+
+        required: true
+    },
+    emailId: String,
+    password: String,
+    gender: {
+        type: String,
+        enum: ["male", "female", "other"]
+    },
+    age: Number,
+    isDeleted :{
+        type : Boolean,
+        default : false
+    },
+    posts: {type: [], deafult: []}
+}, { timestamps: true });
+
+module.exports = mongoose.model('User', userSchema)
+
+
+
+// const  mongoose = require('mongoose');
+// const userSchema = new mongoose.Schema({
+	
+//         firstName : String,
+//         lastName : String,
+//         mobile : String,
+//         emailId : String,
+//         password : String,
+//         age : String,
+    
+// gender : {
+//     type:String,
+//     enum:["male","female","LGBTQ"]
+// },
+//         isdelete:{
+//         type:String,
+//         default:false 
+//         },
+
+// }, {timestamps: true});
+
+// module.exports = mongoose.model('newUser', userSchema) //users
