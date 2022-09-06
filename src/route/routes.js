@@ -9,4 +9,7 @@ router.post("/authors" , authorController.createAuthor)
 
 router.post("/blogs" , blogController.createBlog)
 
+router.get("/getblogs",blogController.getblog)
+
+
 module.exports = router;

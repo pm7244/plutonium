@@ -19,7 +19,7 @@ const blogSchema = new mongoose.Schema({
         type: ObjectId,
         ref: "authors",
         required: true,
-        unique:true
+       
     },
 
     tags: [{
@@ -40,7 +40,7 @@ const blogSchema = new mongoose.Schema({
 
     deletedAt: {
         type: Date,
-        default: Date.now()
+        default: null
     },
 
     isDeleted: {
@@ -49,7 +49,8 @@ const blogSchema = new mongoose.Schema({
     },
 
     publishedAt: {
-        type: Date
+        type: Date,
+        default:null
     },
     isPublished: { type: Boolean, default: false }
 }, { timestamps: true });
