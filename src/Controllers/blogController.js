@@ -1,5 +1,6 @@
 
 const mongoose = require('mongoose');
+const authorModel = require('../model/authorModel');
 const blogsModel = require('../model/blogsModel');
 
 
@@ -25,22 +26,10 @@ const getblogs = async function (req, res) {
     req.query.isPublished = true
     let myData = await blogsModel.find(req.query)
     if (myData.length < 1) {
-      return res.status(404).send({
-        status: false,
-        msg: "not blog found"
-      }
-      )
+      return res.status(404).send({status: false,msg: "not blog found"})
     }
-    return res.status(200).send({
-      status: true,
-      data: myData
-    }
-    )
-  } catch (error) {
-    return res.status(500).send({
-      status: false,
-      msg: error.message
-    })
+    return res.status(200).send({status: true,data: myData})
+  } catch (error) {return res.status(500).send({status: false,msg: error.message})
   }
 }
 
@@ -81,6 +70,34 @@ const deleteblog = async function (req, res) {
     })
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 module.exports.deleteblog=deleteblog
 module.exports.updateblog=updateblog
 module.exports.getblogs = getblogs
