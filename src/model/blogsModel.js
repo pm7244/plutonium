@@ -1,5 +1,3 @@
-
-
 const mongoose = require('mongoose');
 const ObjectId = mongoose.Schema.Types.ObjectId;
 
@@ -18,7 +16,7 @@ const blogSchema = new mongoose.Schema({
     authorId: {
         type: ObjectId,
         ref: "authors",
-        required: true,
+        required: true
        
     },
 
@@ -29,7 +27,7 @@ const blogSchema = new mongoose.Schema({
 
     category: {
         type: String,
-        required: true,
+        required: true
     },
 
     subcategory: [{
