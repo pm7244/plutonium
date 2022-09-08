@@ -44,6 +44,11 @@ const authorizer = async function (req, res, next) {
       }
     }
     let blog = await blogsModel.findOne(req.query);
+    if (!blog) {
+        return res
+          .status(404)
+          .send({ status: false, msg: "blog does not exist" });
+      }
     if (!(req.authorId == blog.authorId)) {
       return res
         .status(401)
