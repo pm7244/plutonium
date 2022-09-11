@@ -98,10 +98,7 @@ const deleteblog = async function (req, res) {
     );
     return res.status(200).send();
   } catch (error) {
-    return res.status(500).send({
-      status: false,
-      msg: error.message,
-    });
+    return res.status(500).send({ status: false,msg: error.message,});
   }
 };
 

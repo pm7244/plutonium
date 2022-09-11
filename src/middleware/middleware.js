@@ -75,6 +75,6 @@ const authorizer2 = async function (req, res, next) {
     }
 };
 
-module.exports.authorizer = authorizer;
-module.exports.authenticator = authenticator;
-module.exports.authorizer2 = authorizer2;
+module.exports.authorizer = authorizer
+module.exports.authenticator = authenticator
+module.exports.authorizer2 = authorizer2
