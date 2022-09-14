@@ -43,19 +43,16 @@ const createAuthor = async function (req, res) {
 
 const loginAuthor = async function (req, res) {
   try {
+
     let { email, password } = req.body;
     let author = await AuthorModel.findOne({ email, password });
+
     if (author) {
       let payload = { authorId: author._id, email: email };
       const generatedToken = jwt.sign(payload, "bloggingproject1");
-      return res.status(200).send({
-        status: true,
-        token: generatedToken,
-      });
+      return res.status(200).send({status: true,token: generatedToken});
     } else {
-      return res
-        .status(400)
-        .send({ status: false, message: "Invalid credentials" });
+      return res.status(400).send({ status: false, message: "Invalid credentials" });
     }
   } catch (error) {
     res.status(500).send({ status: false, msg: error.message });

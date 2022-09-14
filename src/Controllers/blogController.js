@@ -36,6 +36,7 @@ const createBlog = async function (req, res) {
 
 const getblogs = async function (req, res) {
   try {
+    
     req.query.isDeleted = false;
     req.query.isPublished = true;
     let myData = await blogsModel.find(req.query);
