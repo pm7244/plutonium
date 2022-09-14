@@ -1,5 +1,4 @@
 const jwt = require("jsonwebtoken");
-const authorModel = require("../model/authorModel");
 const AuthorModel = require("../model/authorModel");
 
 const createAuthor = async function (req, res) {
@@ -45,7 +44,7 @@ const createAuthor = async function (req, res) {
 const loginAuthor = async function (req, res) {
   try {
     let { email, password } = req.body;
-    let author = await authorModel.findOne({ email, password });
+    let author = await AuthorModel.findOne({ email, password });
     if (author) {
       let payload = { authorId: author._id, email: email };
       const generatedToken = jwt.sign(payload, "bloggingproject1");

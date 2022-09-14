@@ -22,14 +22,14 @@ const createBlog = async function (req, res) {
     if (!validObjectId) {
       return res.status(400).send({ msg: "Please provide a valid authorid" });
     }
-    let findAuthor = await authorModel.findById(authorId);
+    let findAuthor = await authorModel.findOne({_id:authorId,isDeleted:false}); 
     if (!findAuthor) {
-      return res.status(404).send({ msg: "AuthorId does not exist" });
+      return res.status(404).send({ msg: "AuthorId does not exist" }); 
     }
     let Blogdata = await blogsModel.create(req.body);
     res.status(201).send({ status: true, msg: Blogdata });
   } catch (error) {
-    res.status(500).send({ status: false, msg: error.message });
+    res.status(500).send({ status: false, msg: error.message }); 
   }
 };
 //===============================//  getblogs   //======================================//
@@ -68,7 +68,7 @@ const updateblog = async function (req, res) {
     }
     if (isPublished) {
       myBody.isPublished = true;
-      myBody.publishedAt = Date();
+      myBody.publishedAt =  Date();
     }
     let blogId = req.params.blogId;
     

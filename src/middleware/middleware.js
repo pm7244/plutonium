@@ -19,7 +19,7 @@ const authenticator = function (req, res, next) {
             next();
         } else {
             return res
-                .status(400)
+                .status(401)
                 .send({ status: false, message: "Token is not valid" });
         }
     } catch (err) {
