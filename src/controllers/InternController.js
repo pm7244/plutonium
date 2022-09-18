@@ -16,7 +16,7 @@ const createintern = async  (req, res)=> {
         if (!name) return res.status(400).send({ status: false, msg: "Enter your name" })
         if (!email) return res.status(400).send({ status: false, msg: "Enter your email" })
         if (!mobile) return res.status(400).send({ status: false, msg: "Enter mobile Number" })
-        if (!collegeName) return res.status(400).send({ status: false, msg: "Enter collegeId" })
+        if (!collegeName) return res.status(400).send({ status: false, msg: "Enter collegeName" })
 
         if (!name.match(regexValidation)) return res.status(400).send({ status: false, msg: "please enetr a valid name" })
         if (!email.match(regexValidEmail)) return res.status(400).send({ status: false, msg: "please enetr a valid email" })
